@@ -1,6 +1,13 @@
 name: calling the reusable workflow
 on:
   workflow_dispatch:
+    inputs:
+      mymsg:
+        required: true
+        type: string
+
 jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reuse1.yaml
+    with:
+      msg: ${{ inputs.mymsg }}

@@ -2,10 +2,15 @@ name: my reusuable workflow
 
 on:
   workflow_call:
+    inputs:
+      msg:
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: running a reusable workflow
-        run: echo "hello world from reusable workflow"
+        run: |
+            echo "the message is ${{ inputs.msg }}"
